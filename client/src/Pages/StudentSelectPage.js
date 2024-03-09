@@ -12,6 +12,7 @@ import {
 import NavigationBar from "../Components/NavigationBar";
 import { assignStudent, searchStudent } from "../utils/api";
 import { useNavigate } from "react-router-dom";
+import Footer from "../Components/Footer";
 
 const StudentSelectPage = () => {
   // Get the mentor value from localStorage
@@ -112,7 +113,7 @@ const StudentSelectPage = () => {
               </Alert>
             )}
             <div className="d-flex align-items-center justify-content-between mx-3 my-2">
-              <h2 className="mt-4 mb-3 d-inline-block">Select Students</h2>
+              <h2 className="mt-4 mb-3 d-inline-block">Students Available</h2>
               <Form
                 className="d-flex"
                 style={{ height: "50px" }}
@@ -188,7 +189,7 @@ const StudentSelectPage = () => {
             className="text-center"
             style={{ borderLeft: "2px solid rgba(128, 128, 128, 0.2)" }}
           >
-            <h2 className="mt-4 mb-3">Selected Students</h2>
+            <h2 className="mt-4 mb-3">Students Assigned</h2>
             <ul className="list-unstyled">
               {selectedStudents.map((student) => (
                 <div className="card mb-3" key={student.id}>
@@ -216,6 +217,7 @@ const StudentSelectPage = () => {
           </Col>
         </Row>
       </Container>
+      <Footer />
     </>
   );
 };

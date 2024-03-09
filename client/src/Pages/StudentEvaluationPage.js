@@ -4,6 +4,7 @@ import { Form, Button, Container, Card } from "react-bootstrap";
 import NavigationBar from "../Components/NavigationBar";
 import { useNavigate } from "react-router-dom";
 import { evaluateStudent, getStudentMarks, markStudent } from "../utils/api";
+import Footer from "../Components/Footer";
 
 const StudentEvaluationPage = () => {
   // Get the mentor value from localStorage
@@ -141,6 +142,7 @@ const StudentEvaluationPage = () => {
           </Button>
         </Form>
       </Container>
+      <Footer />
     </>
   );
 };

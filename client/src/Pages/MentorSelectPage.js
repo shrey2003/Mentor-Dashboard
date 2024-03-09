@@ -96,7 +96,7 @@ const MentorSelectPage = () => {
               </Alert>
             )}
             <div className="d-flex align-items-center justify-content-between mx-3 my-2">
-              <h2 className="mt-4 mb-3 d-inline-block">Select Mentor</h2>
+              <h2 className="mt-4 mb-3 d-inline-block">Mentors Available</h2>
               <Form
                 className="d-flex"
                 style={{ height: "50px" }}
@@ -162,7 +162,7 @@ const MentorSelectPage = () => {
           >
             {selectedMentor ? (
               <>
-                <h2 className="mt-4 mb-3">Selected Mentor</h2>
+                <h2 className="mt-4 mb-3">Mentor</h2>
                 <Card style={{ width: "18rem", margin: "0 auto" ,backgroundColor: "rgb(255, 104, 104)"}}>
                   <Card.Img
                     variant="top"

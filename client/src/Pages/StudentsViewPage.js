@@ -126,12 +126,12 @@ const StudentsViewPage = () => {
           <tbody>
             {filteredStudents.map((student) => (
               <tr key={student.id}>
-                <td>{student.name}</td>
-                <td>{student.email}</td>
-                <td>{student.ideation_marks ?? "-"}</td>
-                <td>{student.execution_marks ?? "-"}</td>
-                <td>{student.viva_marks ?? "-"}</td>
-                <td>{student.rapidfire_marks ?? "-"}</td>
+                <td className="tabe">{student.name}</td>
+                <td className="tabe">{student.email}</td>
+                <td className="tabe">{student.ideation_marks ?? "-"}</td>
+                <td className="tabe">{student.execution_marks ?? "-"}</td>
+                <td className="tabe">{student.viva_marks ?? "-"}</td>
+                <td className="tabe">{student.rapidfire_marks ?? "-"}</td>
                 <td>
                   {student.evaluated_by === null ? (
                     <Button

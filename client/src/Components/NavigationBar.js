@@ -20,10 +20,10 @@ const NavigationBar = () => {
       // bg="primary"
       variant="dark"
       expand="lg"
-      style={{ marginBottom: "40px" , backgroundColor: "rgb(148, 0, 255)" }}
+      style={{ marginBottom: "40px"}}
     >
       <Container className="px-3">
-        <Navbar.Brand as={Link} to="/" >Dashboard</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/" >Home</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           {mentor ? (
@@ -35,7 +35,7 @@ const NavigationBar = () => {
                   paddingRight: 20,
                 }}
               >
-                <Nav.Link>Add Student</Nav.Link>
+                <Nav.Link>Assign New Student</Nav.Link>
               </LinkContainer>
               <LinkContainer
                 to="/student-view"
@@ -45,7 +45,7 @@ const NavigationBar = () => {
                   paddingRight: 20,
                 }}
               >
-                <Nav.Link>View Student</Nav.Link>
+                <Nav.Link>Evaluated Student</Nav.Link>
               </LinkContainer>
               <NavDropdown
                 title={JSON.parse(localStorage.getItem("mentor")).name}
