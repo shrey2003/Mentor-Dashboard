@@ -1,5 +1,5 @@
 async function searchMentor(searchQuery) {
-  const response = await fetch(`/mentors/search?q=${searchQuery}`);
+  const response = await fetch(`https://mentor-dashboard.onrender.com/mentors/search?q=${searchQuery}`);
   let data;
   if(response.status === 200){
     try {
@@ -13,7 +13,7 @@ async function searchMentor(searchQuery) {
 }
 
 async function getAssignedStudents(mentorId) {
-  const response = await fetch(`/mentors/${mentorId}/students`);
+  const response = await fetch(`https://mentor-dashboard.onrender.com/mentors/${mentorId}/students`);
   if(response.status === 200){
     try {
       return await response.json();
@@ -26,7 +26,7 @@ async function getAssignedStudents(mentorId) {
 }
 
 async function assignStudent(mentorId, studentIds) {
-  const response = await fetch(`/mentors/assign`, {
+  const response = await fetch(`https://mentor-dashboard.onrender.com/mentors/assign`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -45,7 +45,7 @@ async function assignStudent(mentorId, studentIds) {
 }
 
 async function unassignStudent(mentorId, studentId) {
-  const response = await fetch(`/mentors/unassign/${mentorId}/students/${studentId}`, {
+  const response = await fetch(`https://mentor-dashboard.onrender.com/mentors/unassign/${mentorId}/students/${studentId}`, {
     method: "DELETE",
   });
   if(response.status === 200){
@@ -60,7 +60,7 @@ async function unassignStudent(mentorId, studentId) {
 }
 
 async function markStudent(mentorId, studentId, marksData) {
-  const response = await fetch(`/mentors/${mentorId}/students/${studentId}/marks`, {
+  const response = await fetch(`https://mentor-dashboard.onrender.com/mentors/${mentorId}/students/${studentId}/marks`, {
     method: "POST",
     body: JSON.stringify(marksData),
     headers: {
@@ -79,7 +79,7 @@ async function markStudent(mentorId, studentId, marksData) {
 }
 
 async function evaluateStudent(mentorId, studentId) {
-  const response = await fetch(`/mentors/evaluate/${mentorId}/students/${studentId}`, {
+  const response = await fetch(`https://mentor-dashboard.onrender.com/mentors/evaluate/${mentorId}/students/${studentId}`, {
     method: "POST",
   });
   if(response.status === 200){
@@ -95,7 +95,7 @@ async function evaluateStudent(mentorId, studentId) {
 }
 
 async function sendMail(studentId) {
-  const response = await fetch(`/students/send-mail-pdf/${studentId}`, {
+  const response = await fetch(`https://mentor-dashboard.onrender.com/students/send-mail-pdf/${studentId}`, {
     method: "POST",
   });
   if(response.status === 200){
@@ -110,7 +110,7 @@ async function sendMail(studentId) {
 }
 
 async function searchStudent(searchQuery) {
-  const response = await fetch(`/students/search?q=${searchQuery}`);
+  const response = await fetch(`https://mentor-dashboard.onrender.com/students/search?q=${searchQuery}`);
   if(response.status === 200){
     try {
       return await response.json();
@@ -123,7 +123,7 @@ async function searchStudent(searchQuery) {
 }
 
 async function getStudentMarks(id) {
-  const response = await fetch(`/students/student-marks/${id}`);
+  const response = await fetch(`https://mentor-dashboard.onrender.com/students/student-marks/${id}`);
   if(response.status === 200){
     try {
       return await response.json();
