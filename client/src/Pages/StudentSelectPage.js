@@ -136,7 +136,7 @@ const StudentSelectPage = () => {
                 <Card
                   key={student.id}
                   className="m-2"
-                  style={{ width: "17rem" }}
+                  style={{ width: "17rem", backgroundColor: student.id % 2 === 0 ? 'rgb(174, 210, 255)' : 'rgb(220, 255, 183)' }}
                   onClick={() => {
                     if (!student.evaluated_by & !student.mentor_id)
                       handleStudentSelect(student);
@@ -144,7 +144,7 @@ const StudentSelectPage = () => {
                 >
                   <Card.Img
                     variant="top"
-                    src="/default_image.jpg"
+                    src="/student.gif"
                     alt="default_image"
                   />
                   <Card.Body>

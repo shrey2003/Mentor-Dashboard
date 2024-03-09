@@ -17,13 +17,13 @@ const NavigationBar = () => {
 
   return (
     <Navbar
-      bg="primary"
+      // bg="primary"
       variant="dark"
       expand="lg"
-      style={{ marginBottom: "40px" }}
+      style={{ marginBottom: "40px" , backgroundColor: "rgb(148, 0, 255)" }}
     >
       <Container className="px-3">
-        <Navbar.Brand as={Link} to="/">Dashboard</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/" >Dashboard</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           {mentor ? (

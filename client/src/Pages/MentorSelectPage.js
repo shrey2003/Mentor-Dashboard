@@ -12,6 +12,7 @@ import {
 import NavigationBar from "../Components/NavigationBar";
 import { searchMentor } from "../utils/api";
 import { useNavigate } from "react-router-dom";
+import Footer from "../Components/Footer";
 
 const MentorSelectPage = () => {
   // Get the mentor value from localStorage
@@ -116,14 +117,16 @@ const MentorSelectPage = () => {
             <div className="d-flex flex-wrap">
               {mentors.map((mentor) => (
                 <Card
+                  
+                  border="info"
                   key={mentor.id}
                   className="m-2"
-                  style={{ width: "17rem" }}
+                  style={{ width: "17rem" , backgroundColor: mentor.id % 2 === 0 ? 'rgb(174, 210, 255)' : 'rgb(220, 255, 183)'}}
                   onClick={() => handleMentorSelect(mentor)}
                 >
                   <Card.Img
                     variant="top"
-                    src="/default_image.jpg"
+                    src="/teacher.gif"
                     alt="default_image"
                   />
                   <Card.Body>
@@ -160,10 +163,10 @@ const MentorSelectPage = () => {
             {selectedMentor ? (
               <>
                 <h2 className="mt-4 mb-3">Selected Mentor</h2>
-                <Card style={{ width: "18rem", margin: "0 auto" }}>
+                <Card style={{ width: "18rem", margin: "0 auto" ,backgroundColor: "rgb(255, 104, 104)"}}>
                   <Card.Img
                     variant="top"
-                    src="/default_image.jpg"
+                    src="/teacher1.gif"
                     alt="default_image"
                   />
                   <Card.Body>
@@ -195,6 +198,7 @@ const MentorSelectPage = () => {
           </Col>
         </Row>
       </Container>
+      <Footer />
     </>
   );
 };

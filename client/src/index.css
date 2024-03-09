@@ -2,17 +2,17 @@
 
 body {
   font-family: Poppins !important;
+  background-color: rgb(25,39,52) !important; 
+}
+.d-flex.align-items-center.justify-content-between.mx-3.my-2 {
+  background: aliceblue;
+  padding-left: 7%;
+  padding-right: 5%;
 }
 
-/* .mentor-card {
-  transition: all 0.3s ease-in-out;
+.text-center.col-md-4 {
+  background-color: rgb(167, 228, 178);
 }
-
-.mentor-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-} */
-
 .search-bar {
   transition: all 0.3s ease-in-out;
   border-color: #ccc;
