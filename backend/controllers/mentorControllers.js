@@ -252,16 +252,16 @@ const markStudent = (req, res) => {
         if (result.length > 0) {
           let updateMarksQuery = `UPDATE student_marks SET`;
 
-          if (idea_marks !== undefined) {
+          if (ideation_marks !== undefined) {
             updateMarksQuery += ` ideation_marks = ${ideation_marks},`;
           }
           if (execution_marks !== undefined) {
             updateMarksQuery += ` execution_marks = ${execution_marks},`;
           }
-          if (presentation_marks !== undefined) {
+          if (viva_marks !== undefined) {
             updateMarksQuery += ` viva_marks = ${viva_marks},`;
           }
-          if (communication_marks !== undefined) {
+          if (rapidfire_marks !== undefined) {
             updateMarksQuery += ` rapidfire_marks = ${rapidfire_marks},`;
           }
 
