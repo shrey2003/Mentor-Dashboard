@@ -1,6 +1,7 @@
 import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap"; 
+import { Link } from "react-router-dom";
 
 const NavigationBar = () => {
   // Get the mentor value from localStorage
@@ -22,7 +23,7 @@ const NavigationBar = () => {
       style={{ marginBottom: "40px" }}
     >
       <Container className="px-3">
-        <Navbar.Brand to="/">Dashboard</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">Dashboard</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           {mentor ? (

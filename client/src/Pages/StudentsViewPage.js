@@ -33,10 +33,10 @@ const StudentsViewPage = () => {
           students.filter(
             (student) =>
               student.evaluated_by === null &&
-              (student.ideation_marks !== null ||
-                student.execution_marks !== null ||
-                student.viva_marks !== null ||
-                student.rapidfire_marks !== null)
+              (student.ideation_marks === null ||
+                student.execution_marks === null ||
+                student.viva_marks === null ||
+                student.rapidfire_marks === null)
           )
         );
         break;

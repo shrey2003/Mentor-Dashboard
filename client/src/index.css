@@ -4,6 +4,43 @@ body {
   font-family: Poppins !important;
 }
 
+/* .mentor-card {
+  transition: all 0.3s ease-in-out;
+}
+
+.mentor-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+} */
+
+.search-bar {
+  transition: all 0.3s ease-in-out;
+  border-color: #ccc;
+}
+
+.search-bar:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.selected-mentor {
+  animation: fadeIn 0.5s ease-in-out;
+
+}
+
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+
 @media (max-width: 1024px) {
   .navBorder {
     border: none !important;
