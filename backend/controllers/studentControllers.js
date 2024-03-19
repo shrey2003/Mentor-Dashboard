@@ -23,16 +23,18 @@ const searchStudent = (req, res) => {
     res.status(200).json(result);
   });
 };
-
 // Controller for getting student marks by student id
 const getStudentMarks = (req, res) => {
+  
   const id = req.params.id;
   const query = `
     SELECT s.id, s.name, s.email, s.phone, sm.ideation_marks, sm.execution_marks, sm.viva_marks, sm.rapidfire_marks, sm.total_marks
     FROM students AS s
     LEFT JOIN student_marks AS sm ON s.id = sm.student_id
     WHERE s.id = ?
+
   `;
+  
 
   db.query(query, [id], (err, result) => {
     if (err) {
@@ -41,6 +43,7 @@ const getStudentMarks = (req, res) => {
     }
 
     res.status(200).json(result[0]);
+    console.log(res);
   });
 };
 

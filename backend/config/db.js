@@ -6,8 +6,8 @@ const mysql = require('mysql');
 
 const connection = mysql.createConnection({
   host: 'sql6.freemysqlhosting.net',
-  user: 'sql6689938',
-  password: 'XUW2y9Mg5K',
+  user: 'sql6692636',
+  password: 'yt5dcxDE9D',
 });
 
 
@@ -18,9 +18,9 @@ const connection = mysql.createConnection({
 // });
 
 // Connect to the "dashboard" database
-connection.query('USE sql6689938', (err) => {
+connection.query('USE sql6692636', (err) => {
   if (err) throw err;
-  console.log('Using database: sql6689938');
+  console.log('Using database: sql6692636');
 });
 
 // Create the "mentors" table

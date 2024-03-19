@@ -20,7 +20,7 @@ const MentorSelectPage = () => {
   if (mentor) mentor = JSON.parse(mentor);
 
   const navigate = useNavigate();
-
+  const [autocompleteOptions, setAutocompleteOptions] = useState([]);
   // state for search bar input
   const [searchString, setSearchString] = useState("");
   // state for the list of mentors
@@ -74,6 +74,22 @@ const MentorSelectPage = () => {
     fetchMentors("");
   }, []);
 
+  const handleAutocomplete = (input) => {
+    if(!input) {
+      setAutocompleteOptions([]);
+      return;
+    }
+    const filteredOptions = mentors.filter((ment) => {
+      // console.log(student)
+      return ment.email.toLowerCase().includes(input.toLowerCase())
+    }
+    );
+
+    console.log(filteredOptions)
+
+    setAutocompleteOptions(filteredOptions);
+  };
+
   return (
     <>
       <NavigationBar />
@@ -102,26 +118,56 @@ const MentorSelectPage = () => {
                 style={{ height: "50px" }}
                 onSubmit={handleMentorSearch}
               >
-                <FormControl
-                  type="text"
-                  placeholder="Search mentor"
-                  className="mr-sm-2"
-                  value={searchString}
-                  onChange={(e) => setSearchString(e.target.value)}
-                />
-                <Button variant="outline-success" onClick={handleMentorSearch}>
-                  Search
-                </Button>
+                <form autocomplete="off" onSubmit={e => {
+                  e.preventDefault();
+                }}>
+                  <div class="autocomplete" style={{
+                    width: "300px"
+                  }}>
+                    <input id="myInput" type="text" name="mentors" value={searchString} placeholder="Mentors" onChange={
+                      e => {
+                        setSearchString(e.target.value);
+                        console.log(e.target.value);
+                        handleAutocomplete(e.target.value)
+                      }
+                    } />
+                    { (autocompleteOptions.length != 0) && (<div className="autocomplete-items">
+                      {autocompleteOptions.map(x => {
+                        console.log(x);
+                        const idx = x.email.toLowerCase().indexOf(searchString.toLowerCase());
+                        const nonBoldStart = x.email.substr(0, idx);
+                        const boldPart = x.email.substr(idx, searchString.length);
+                        const nonBoldEnd = x.email.substr(idx + searchString.length);
+                        return (<button style={{
+                          all:"unset",
+                          background: "white"
+                        }} onClick={e => { 
+                          e.preventDefault();
+                        setSearchString(x.email)
+                        }}>
+                          <span>  
+                            {nonBoldStart}
+                            <strong>{boldPart}</strong>
+                            {nonBoldEnd}
+                          </span>
+                        </button>)
+                      })}
+                    </div>) }
+                  </div>
+                  <button onClick={handleMentorSearch} type="button" className="btn btn-primary">
+                    Search
+                  </button>
+                </form>
               </Form>
             </div>
             <div className="d-flex flex-wrap">
               {mentors.map((mentor) => (
                 <Card
-                  
+
                   border="info"
                   key={mentor.id}
                   className="m-2"
-                  style={{ width: "17rem" , backgroundColor: mentor.id % 2 === 0 ? 'rgb(174, 210, 255)' : 'rgb(220, 255, 183)'}}
+                  style={{ width: "17rem", backgroundColor: mentor.id % 2 === 0 ? 'rgb(174, 210, 255)' : 'rgb(220, 255, 183)' }}
                   onClick={() => handleMentorSelect(mentor)}
                 >
                   <Card.Img
@@ -163,7 +209,7 @@ const MentorSelectPage = () => {
             {selectedMentor ? (
               <>
                 <h2 className="mt-4 mb-3">Mentor</h2>
-                <Card style={{ width: "18rem", margin: "0 auto" ,backgroundColor: "rgb(255, 104, 104)"}}>
+                <Card style={{ width: "18rem", margin: "0 auto", backgroundColor: "rgb(255, 104, 104)" }}>
                   <Card.Img
                     variant="top"
                     src="/teacher1.gif"

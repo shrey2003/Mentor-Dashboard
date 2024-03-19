@@ -34,6 +34,7 @@ const StudentSelectPage = () => {
     fetchStudents(searchString);
   };
 
+
   // Function to handle student selection/deselection
   const handleStudentSelect = (student) => {
     // Check if student is already selected
@@ -79,12 +80,30 @@ const StudentSelectPage = () => {
   // Function to fetch students matching the search string from the server
   const fetchStudents = async (searchString) => {
     const data = await searchStudent(searchString);
-    if (typeof data === "string") {
-      setMessage(data);
-    } else {
-      setStudents(data);
-    }
+    console.log(data)
+    const newstudes = [...data].filter(x => x.email .includes(searchString));
+
+    setStudents(newstudes)
   };
+
+  const [autocompleteOptions, setAutocompleteOptions] = useState([]);
+
+  const handleAutocomplete = (input) => {
+    if(!input) {
+      setAutocompleteOptions([]);
+      return;
+    }
+    const filteredOptions = students.filter((ment) => {
+      // console.log(student)
+      return ment.email.toLowerCase().includes(input.toLowerCase())
+    }
+    );
+
+    console.log(filteredOptions)
+
+    setAutocompleteOptions(filteredOptions);
+  };
+
 
   // Fetch all students when the page loads
   useEffect(() => {
@@ -119,16 +138,46 @@ const StudentSelectPage = () => {
                 style={{ height: "50px" }}
                 onSubmit={handleStudentSearch}
               >
-                <FormControl
-                  type="text"
-                  placeholder="Search student"
-                  className="mr-sm-2"
-                  value={searchString}
-                  onChange={(e) => setSearchString(e.target.value)}
-                />
-                <Button variant="outline-success" onClick={handleStudentSearch}>
-                  Search
-                </Button>
+                <form autocomplete="off" onSubmit={e => {
+                  e.preventDefault();
+                }}>
+                  <div class="autocomplete" style={{
+                    width: "300px"
+                  }}>
+                    <input id="myInput" type="text" name="students" value={searchString} placeholder="Students" onChange={
+                      e => {
+                        setSearchString(e.target.value);
+                        console.log(e.target.value);
+                        handleAutocomplete(e.target.value)
+                      }
+                    } />
+                    { (autocompleteOptions.length != 0) && (<div className="autocomplete-items">
+                      {autocompleteOptions.map(x => {
+                        console.log(x);
+                        const idx = x.email.toLowerCase().indexOf(searchString.toLowerCase());
+                        const nonBoldStart = x.email.substr(0, idx);
+                        const boldPart = x.email.substr(idx, searchString.length);
+                        const nonBoldEnd = x.email.substr(idx + searchString.length);
+                        return (<button style={{
+                          all:"unset",
+                          background: "white"
+                        }} onClick={e => { 
+                          e.preventDefault();
+                        setSearchString(x.email)
+                        }}>
+                          <span>  
+                            {nonBoldStart}
+                            <strong>{boldPart}</strong>
+                            {nonBoldEnd}
+                          </span>
+                        </button>)
+                      })}
+                    </div>) }
+                  </div>
+                  <button onClick={handleStudentSearch} type="button" className="btn btn-primary">
+                    Search
+                  </button>
+                </form>
               </Form>
             </div>
 
@@ -163,8 +212,8 @@ const StudentSelectPage = () => {
                         Evaluated
                       </Button>
                     ) : selectedStudents
-                        .map((s) => s.id)
-                        .includes(student.id) ? (
+                      .map((s) => s.id)
+                      .includes(student.id) ? (
                       <Button
                         variant="danger"
                         onClick={() => handleStudentDeselect(student)}

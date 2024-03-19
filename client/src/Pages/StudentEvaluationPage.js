@@ -126,6 +126,7 @@ const StudentEvaluationPage = () => {
               }
             />
           </Form.Group>
+      
           <Form.Group controlId="totalMarks" className="mt-2">
             <Form.Label>Total Marks</Form.Label>
             <Form.Control type="text" value={student?.total_marks} disabled />

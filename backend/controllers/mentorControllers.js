@@ -40,6 +40,7 @@ const getAssignedStudents = (req, res) => {
       FROM students
       LEFT JOIN student_marks ON students.id = student_marks.student_id
       WHERE students.mentor_id = ${mentorId}
+      ORDER BY student_marks.total_marks DESC
     `;
     db.query(getStudentsQuery, (err, result) => {
       if (err) {

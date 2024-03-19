@@ -119,6 +119,7 @@ const StudentsViewPage = () => {
               <th>Execution Marks</th>
               <th>Viva Marks</th>
               <th>RapidFire Marks</th>
+              <th>total_marks</th>
               <th>Evaluate</th>
               <th>Action</th>
             </tr>
@@ -132,6 +133,7 @@ const StudentsViewPage = () => {
                 <td className="tabe">{student.execution_marks ?? "-"}</td>
                 <td className="tabe">{student.viva_marks ?? "-"}</td>
                 <td className="tabe">{student.rapidfire_marks ?? "-"}</td>
+                <td className="tabe">{student.total_marks ?? "-"}</td>
                 <td>
                   {student.evaluated_by === null ? (
                     <Button
