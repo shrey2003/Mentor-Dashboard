@@ -37,6 +37,7 @@ const MentorSelectPage = () => {
   const handleMentorSearch = () => {
     // e.preventDefault();
     setSearchString("");
+    setAutocompleteOptions([]);
     // fetch mentors from the server based on search string
     fetchMentors(searchString);
   };
