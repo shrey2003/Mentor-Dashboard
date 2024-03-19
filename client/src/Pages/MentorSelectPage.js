@@ -32,8 +32,11 @@ const MentorSelectPage = () => {
   // state for showing/hiding error message
   const [show, setShow] = useState(true);
 
-  const handleMentorSearch = (e) => {
-    e.preventDefault();
+  // const [showAutoComplete, setShowAutoComplete] = useState(false);
+
+  const handleMentorSearch = () => {
+    // e.preventDefault();
+    setSearchString("");
     // fetch mentors from the server based on search string
     fetchMentors(searchString);
   };
@@ -59,6 +62,7 @@ const MentorSelectPage = () => {
 
   // Function to search for mentors on the server
   const fetchMentors = async (searchString) => {
+    setSearchString("");
     const data = await searchMentor(searchString);
     if (typeof data === "string") {
       // set error message if response is a string
@@ -72,7 +76,8 @@ const MentorSelectPage = () => {
   useEffect(() => {
     // fetch all mentors from the server when the component mounts
     fetchMentors("");
-  }, []);
+    // setSearchString("")
+  }, [setSearchString]);
 
   const handleAutocomplete = (input) => {
     if(!input) {
@@ -88,6 +93,7 @@ const MentorSelectPage = () => {
     console.log(filteredOptions)
 
     setAutocompleteOptions(filteredOptions);
+    // setShowAutoComplete(filteredOptions.length > 0);
   };
 
   return (
